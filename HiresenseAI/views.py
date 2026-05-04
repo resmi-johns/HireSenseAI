@@ -8,6 +8,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 
 def home(request):
@@ -172,3 +173,7 @@ def launch_page(request):
     return render(request, 'HiresenseAI/launch.html')
 
 
+
+def logout_page(request):
+    logout(request)
+    return redirect('/')

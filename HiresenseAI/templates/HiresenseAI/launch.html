@@ -43,7 +43,22 @@ color:#a855f7;
 
 .user{
 color:#cbd5e1;
+display:flex;
+align-items:center;
+gap:16px;
 }
+
+.logout{
+color:#dbeafe;
+text-decoration:none;
+font-size:15px;
+transition:0.3s;
+}
+
+.logout:hover{
+color:#c084fc;
+}
+
 
 .hero{
 background:rgba(255,255,255,0.07);
@@ -146,7 +161,9 @@ color:#94a3b8;
 
 <div class="top">
 <div class="logo">HireSense <span>AI</span></div>
-<div class="user">Logged in as {{ request.user.username }}</div>
+<div class="user">Logged in as {{ request.user.username }}
+    <a href="/logout/" class="logout">Logout</a>
+</div>
 </div>
 
 <div class="hero">

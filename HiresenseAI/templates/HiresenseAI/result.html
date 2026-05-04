@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Result</title>
+<style>
+
+body{
+font-family:Arial;
+background:linear-gradient(135deg,#0b1120,#111827,#312e81);
+color:white;
+padding:50px;
+}
+
+.box{
+max-width:700px;
+margin:auto;
+background:rgba(255,255,255,0.07);
+padding:35px;
+border-radius:22px;
+}
+
+h1{
+margin-bottom:25px;
+}
+
+.score{
+font-size:50px;
+color:#c084fc;
+margin-bottom:25px;
+}
+
+p{
+margin:12px 0;
+}
+
+a{
+color:#93c5fd;
+text-decoration:none;
+}
+
+.btn, .btn1{
+display:inline-block;
+padding:14px 24px;
+border-radius:30px;
+background:linear-gradient(to right,#2563eb,#9333ea);
+color:white;
+text-decoration:none;
+}
+
+form{
+display:inline-block;
+margin-right:12px;
+}
+
+#loadingScreen{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(11,17,32,0.92);
+z-index:9999;
+justify-content:center;
+align-items:center;
+}
+
+.loader-box{
+text-align:center;
+color:white;
+font-size:24px;
+}
+
+.spinner{
+width:55px;
+height:55px;
+border:5px solid rgba(255,255,255,0.2);
+border-top:5px solid #a855f7;
+border-radius:50%;
+margin:auto;
+margin-bottom:20px;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+
+
+</style>
+</head>
+<script>
+
+function showLoader(){
+    document.getElementById("loadingScreen").style.display = "flex";
+
+    setTimeout(function(){
+        document.getElementById("geminiForm").submit();
+    }, 100);
+
+    return false;
+}
+</script>
+<body>
+
+<div class="box">
+<h1>Resume Analysis</h1>
+
+<p><strong>File:</strong> {{ filename }}</p>
+
+<div class="score">{{ score }}/100</div>
+
+<p><strong>Skills Found:</strong> {{ skills }}</p>
+
+<p><strong>Sections Found:</strong> {{ sections }}</p>
+
+<br><br>
+<br><br>
+
+<form id="geminiForm" method="POST" action="/gemini/" onsubmit="return showLoader()" style="display:inline-block;">
+
+{% csrf_token %}
+
+<input type="hidden" name="resume_text" value="{{ resume_text }}">
+
+<button type="submit" class="btn" id="aiBtn">Get Gemini Suggestions</button>
+
+</form>
+
+<a href="/dashboard/" class="btn1"> Analyze Another Resume</a>
+
+</div>
+
+<div id="loadingScreen">
+    <div class="loader-box">
+        <div class="spinner"></div>
+        <p>Analyzing with Gemini...</p>
+    </div>
+</div>
+
+
+</body>
+</html>

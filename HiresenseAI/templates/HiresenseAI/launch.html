@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Launch HireSense AI</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#0b1120,#111827,#312e81);
+color:white;
+min-height:100vh;
+padding:50px;
+}
+
+.wrapper{
+max-width:1100px;
+margin:auto;
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:40px;
+}
+
+.logo{
+font-size:28px;
+font-weight:700;
+}
+
+.logo span{
+color:#a855f7;
+}
+
+.user{
+color:#cbd5e1;
+}
+
+.hero{
+background:rgba(255,255,255,0.07);
+padding:45px;
+border-radius:26px;
+backdrop-filter:blur(14px);
+margin-bottom:35px;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:14px;
+}
+
+.hero span{
+color:#a855f7;
+}
+
+.hero p{
+color:#cbd5e1;
+font-size:18px;
+margin-bottom:28px;
+}
+
+.btn{
+display:inline-block;
+padding:15px 30px;
+border-radius:40px;
+background:linear-gradient(to right,#2563eb,#9333ea);
+color:white;
+text-decoration:none;
+font-weight:600;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:22px;
+margin-top:20px;
+}
+
+.card{
+background:rgba(255,255,255,0.06);
+padding:28px;
+border-radius:22px;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card h3{
+margin-bottom:10px;
+color:#c084fc;
+}
+
+.card p{
+color:#cbd5e1;
+line-height:1.6;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:18px;
+margin-top:35px;
+}
+
+.stat{
+background:rgba(255,255,255,0.05);
+padding:24px;
+border-radius:20px;
+text-align:center;
+}
+
+.num{
+font-size:32px;
+font-weight:700;
+color:#a855f7;
+margin-bottom:8px;
+}
+
+.label{
+color:#cbd5e1;
+}
+
+.footer{
+margin-top:40px;
+text-align:center;
+color:#94a3b8;
+}
+
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+
+<div class="top">
+<div class="logo">HireSense <span>AI</span></div>
+<div class="user">Logged in as {{ request.user.username }}</div>
+</div>
+
+<div class="hero">
+<h1>Welcome, <span>{{ request.user.username }}</span></h1>
+<p>Your AI-powered career assistant is ready to optimize resumes, improve ATS score and boost your hiring potential.</p>
+
+<a href="/dashboard/" class="btn">Launch HireSense AI</a>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Resume Analyzer</h3>
+<p>Scan your resume instantly and detect missing sections, formatting issues and weak skill coverage.</p>
+</div>
+
+<div class="card">
+<h3>ATS Optimization</h3>
+<p>Improve keyword relevance to pass automated hiring systems with confidence.</p>
+</div>
+
+<div class="card">
+<h3>Gemini Suggestions</h3>
+<p>Get AI-powered rewrites, stronger summaries and smart improvements.</p>
+</div>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<div class="num">24/7</div>
+<div class="label">AI Support</div>
+</div>
+
+<div class="stat">
+<div class="num">100+</div>
+<div class="label">Skills Detection</div>
+</div>
+
+<div class="stat">
+<div class="num">ATS</div>
+<div class="label">Ready Focus</div>
+</div>
+
+</div>
+
+<div class="footer">
+© 2026 HireSense AI • Smarter Careers Begin Here
+</div>
+
+</div>
+
+</body>
+</html>

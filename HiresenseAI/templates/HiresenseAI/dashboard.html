@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Segoe UI,sans-serif;
+background:linear-gradient(135deg,#0b1120,#111827,#312e81);
+color:white;
+min-height:100vh;
+padding:40px;
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:40px;
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+}
+
+.logo span{
+color:#a855f7;
+}
+
+.wrap{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:30px;
+}
+
+.panel{
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.08);
+padding:28px;
+border-radius:24px;
+}
+
+h2{
+margin-bottom:20px;
+}
+
+.uploadbox{
+border:2px dashed rgba(255,255,255,0.2);
+padding:50px;
+text-align:center;
+border-radius:20px;
+margin-bottom:20px;
+}
+
+input[type=file]{
+margin-top:15px;
+color:white;
+}
+
+button{
+padding:14px 24px;
+border:none;
+border-radius:30px;
+background:linear-gradient(to right,#2563eb,#9333ea);
+color:white;
+cursor:pointer;
+margin-top:15px;
+}
+
+.resume{
+padding:16px;
+background:rgba(255,255,255,0.05);
+border-radius:16px;
+margin-bottom:14px;
+}
+
+.small{
+color:#cbd5e1;
+font-size:14px;
+margin-top:5px;
+}
+
+.stat{
+padding:18px;
+background:rgba(255,255,255,0.05);
+border-radius:18px;
+margin-bottom:18px;
+}
+
+.score{
+font-size:28px;
+font-weight:700;
+color:#c084fc;
+}
+
+@media(max-width:900px){
+.wrap{
+grid-template-columns:1fr;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="top">
+<div class="logo">HireSense <span>AI</span></div>
+</div>
+
+<div class="wrap">
+
+<div class="panel">
+<h2>Upload Resume</h2>
+
+<form method="POST" action="/analyze/" enctype="multipart/form-data">
+{% csrf_token %}
+
+<div class="uploadbox">
+
+<p>Select Resume File</p>
+<p class="small">PDF / DOCX Supported</p>
+
+<input type="file" name="resume" required>
+<br><br>
+
+<button type="submit">Analyze Resume</button>
+
+</div>
+
+</form>
+
+
+<h2>Previous Analyses</h2>
+
+<div class="resume">
+Frontend Developer Resume
+<div class="small">Score: 88 • Yesterday</div>
+</div>
+
+<div class="resume">
+Python Intern Resume
+<div class="small">Score: 82 • 2 days ago</div>
+</div>
+
+<div class="resume">
+Fresher Resume
+<div class="small">Score: 76 • Last week</div>
+</div>
+
+</div>
+
+<div class="panel">
+
+<h2>Overview</h2>
+
+<div class="stat">
+Total Resumes
+<div class="score">12</div>
+</div>
+
+<div class="stat">
+Highest Score
+<div class="score">91</div>
+</div>
+
+<div class="stat">
+Avg ATS Match
+<div class="score">84%</div>
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

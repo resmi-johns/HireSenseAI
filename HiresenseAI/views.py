@@ -9,13 +9,22 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-
+from .models import ResumeHistory
 
 def home(request):
     return render(request, 'HiresenseAI/index.html')
 
 def dashboard(request):
-    return render(request, 'HiresenseAI/dashboard.html')
+
+    history = ResumeHistory.objects.filter(
+        user=request.user
+    ).order_by('-created_at')
+
+    return render(
+        request,
+        'HiresenseAI/dashboard.html',
+        {'history': history}
+    )
 
 
 def analyze_resume(request):
@@ -80,6 +89,14 @@ def analyze_resume(request):
             'filename': file.name,
             'resume_text': text
         }
+
+        if request.user.is_authenticated:
+
+           ResumeHistory.objects.create(
+              user=request.user,
+              filename=file.name,
+              score=score
+          )
 
         return render(request, 'HiresenseAI/result.html', context)
 

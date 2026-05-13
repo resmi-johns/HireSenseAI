@@ -141,20 +141,24 @@ grid-template-columns:1fr;
 
 <h2>Previous Analyses</h2>
 
-<div class="resume">
-Frontend Developer Resume
-<div class="small">Score: 88 • Yesterday</div>
-</div>
+{% for item in history %}
 
 <div class="resume">
-Python Intern Resume
-<div class="small">Score: 82 • 2 days ago</div>
+{{ item.filename }}
+
+<div class="small">
+Score: {{ item.score }} • {{ item.created_at }}
 </div>
 
-<div class="resume">
-Fresher Resume
-<div class="small">Score: 76 • Last week</div>
 </div>
+
+{% empty %}
+
+<div class="resume">
+No resume history yet.
+</div>
+
+{% endfor %}
 
 </div>
 
@@ -169,7 +173,7 @@ Total Resumes
 
 <div class="stat">
 Highest Score
-<div class="score">91</div>
+<div class="score">95</div>
 </div>
 
 <div class="stat">

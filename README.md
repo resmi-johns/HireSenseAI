@@ -18,7 +18,5 @@ Technologies Used
 - JavaScript
 - Gemini API
 
-Installation
-
 Author
 Resmi Johnson
